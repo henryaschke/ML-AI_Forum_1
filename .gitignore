@@ -27,6 +27,8 @@ env/
 *.png
 *.jpg
 *.pdf
+# Exception for visualization files
+!visualizations/*.png
 
 # Saved models
 *.pkl
