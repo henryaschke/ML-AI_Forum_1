@@ -2,6 +2,8 @@
 
 This project explores whether we can predict gender from facial embeddings. It's based on a small dataset of 128-dimensional face embedding vectors extracted from facial images.
 
+![Dashboard](visualizations/dashboard.png)
+
 ## Background
 
 For a computer vision class experiment, we collected face images from students and generated 128-dimensional embeddings using a face recognition library. These embeddings are designed to capture the unique characteristics of faces for identification purposes, but they may also encode demographic attributes like gender.
@@ -26,6 +28,8 @@ To address this challenge, I've explored several approaches:
 - `basic_model.py`: Core analysis with feature selection and simple models
 - `advanced_model.py`: Advanced techniques with hyperparameter tuning and ensemble models
 - `feature_analysis.py`: In-depth analysis of which embedding dimensions best predict gender
+- `create_visualizations.py`: Script to generate advanced visualizations
+- `visualization_summary.md`: Detailed explanation of all visualizations
 - `requirements.txt`: Dependencies needed to run the code
 
 ## Key Findings
@@ -36,21 +40,40 @@ After extensive experimentation, I found that:
    - Even with simple models, we can achieve >90% accuracy
    - PCA visualization shows clear separation between genders
 
+   ![PCA Visualization](visualizations/pca_visualization.png)
+
 2. **Only about 20-30 of the 128 features are needed**
    - Feature selection significantly improves model performance
    - Consistent important features were identified across multiple methods
+   
+   ![Feature Importance](visualizations/feature_importance.png)
    
 3. **Regularization is crucial**
    - L1/L2 regularization helps control overfitting
    - Ridge regression performs well on this dataset
 
+   ![Validation Curve](visualizations/validation_curve.png)
+
 4. **Cross-validation is essential for reliable evaluation**
    - Given the small dataset, k-fold cross-validation provides more realistic performance estimates
+
+   ![Model Comparison](visualizations/model_comparison.png)
 
 5. **Best performing models**
    - Logistic regression with selected features (accuracy ~98%)
    - PCA + logistic regression (accuracy ~97%)
    - Ensemble of multiple model types (accuracy ~98%)
+
+## Advanced Visualizations
+
+This project includes a variety of advanced visualizations to help understand the data and model performance:
+
+- **Dimensionality Reduction**: PCA (2D & 3D) and t-SNE visualizations
+- **Feature Analysis**: Importance, correlation, and PCA explained variance
+- **Model Performance**: Learning curves, validation curves, and model comparisons
+- **Dashboard**: A comprehensive view of key insights
+
+See [visualization_summary.md](visualization_summary.md) for a detailed explanation of all visualizations.
 
 ## Usage
 
@@ -68,6 +91,9 @@ python advanced_model.py
 
 # Run feature importance analysis
 python feature_analysis.py
+
+# Generate visualizations
+python create_visualizations.py
 ```
 
 ## Future Work
